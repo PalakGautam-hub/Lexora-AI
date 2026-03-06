@@ -252,7 +252,7 @@ async function send(){
   base64: d.base64 ? d.base64 : ""
 }))
 
-    const res = await fetch("http://127.0.0.1:5000/ask",{
+    const res = await fetch("https://lexora-ai-ipqj.onrender.com/ask",{
   method:"POST",
   headers:{
     "Content-Type":"application/json"
