@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="logo.png">
+  <title>Lexora — AI Document Assistant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300;1,400&family=Cormorant:wght@700;800&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Lexora" class="logo-img" />
+      <span class="logo-text">Lex<em>ora</em></span>
+    </div>
+    <div class="header-center">
+      <span class="qual-item">Upload</span>
+      <span class="qual-star">✦</span>
+      <span class="qual-item">Query</span>
+      <span class="qual-star">✦</span>
+      <span class="qual-item">Understand</span>
+    </div>
+    <div class="header-badge">AI Document Assistant</div>
+  </header>
+
+  <div class="app">
+
+    <div class="left">
+      <div class="left-top">
+        <div class="panel-label">Documents</div>
+        <div class="drop-zone" id="dropZone">
+          <input type="file" id="fileInput" multiple />
+          <div class="drop-glyph">❧</div>
+          <h3>Drop files here</h3>
+          <p>.txt · .pdf · .md · .csv</p>
+        </div>
+      </div>
+      <div class="doc-list" id="docList">
+        <div class="empty-docs">No documents yet.<br />Upload to begin.</div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="chat-topbar">
+        <div class="status-dot" id="statusDot"></div>
+        <span class="status-label" id="statusText">No document selected</span>
+        <span class="doc-name-tag" id="docTag"></span>
+      </div>
+
+      <div class="chat-area" id="chatArea">
+        <div class="welcome" id="welcome">
+          <div class="welcome-title">Ask your<br /><em>document</em><br />anything.</div>
+          <div class="welcome-line"></div>
+          <p class="welcome-sub">Upload any text file on the left, then query it naturally. Lexora reads and understands so you don't have to search manually.</p>
+          <div class="suggestions">
+            <button class="sug-btn" onclick="useSug(this)"><span class="sug-tag">Summarise</span>Give me a brief overview</button>
+            <button class="sug-btn" onclick="useSug(this)"><span class="sug-tag">Key Points</span>What are the main takeaways?</button>
+            <button class="sug-btn" onclick="useSug(this)"><span class="sug-tag">Clarify</span>Explain the core argument simply</button>
+            <button class="sug-btn" onclick="useSug(this)"><span class="sug-tag">Extract</span>List all key facts and figures</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-bar">
+        <div class="input-wrap">
+          <textarea id="queryInput" placeholder="Pose your question…" rows="1"></textarea>
+          <button class="send-btn" id="sendBtn" onclick="send()" disabled>Send →</button>
+        </div>
+        <div class="input-hint">
+          <span>Enter to send · Shift+Enter for new line</span>
+          <span id="docCount">0 documents</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
