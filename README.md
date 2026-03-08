@@ -1,42 +1,138 @@
-# Lexora — AI Document Assistant
+# Lexora AI — Intelligent Document Assistant
 
-Lexora is an AI-powered document assistant that allows users to upload documents and interact with them intelligently. It helps summarize content, extract key insights, and answer questions based on the document.
-
----
-
-## ✨ Features
-
-- Upload documents
-- Ask questions about documents
-- AI-powered summarization
-- Extract key points
-- Clarify complex sections
-- Clean and minimal interface
+Lexora AI is an AI-powered document assistant that helps users upload, analyze, and interact with documents using natural language. It allows users to extract insights, summarize documents, and ask questions about their files through an intuitive interface.
 
 ---
 
-## 🖥️ Interface
+## Demo
 
-Lexora provides an interactive workspace where users can:
-
-- Upload a document
-- Ask questions about its content
-- Generate summaries
-- Extract key information
-
-Example actions:
-
-- **Summarize** – Get a brief overview of the document  
-- **Key Points** – Identify important takeaways  
-- **Clarify** – Simplify complex explanations  
-- **Extract** – Pull important facts and figures  
+![Lexora AI Demo](Lexora-AI.png)
 
 ---
 
-## 🚀 Getting Started
+## Features
 
-### Clone the repository
+* Upload and analyze documents
+* AI-powered question answering
+* Document summarization
+* Context-aware responses
+* Simple and clean UI
+* Fast document processing
 
-```bash
-git clone https://github.com/PalakGautam-hub/Lexora-AI.git
-cd Lexora-AI
+---
+
+## Tech Stack
+
+**Backend**
+
+* Python
+* Flask / FastAPI
+* AI APIs
+
+**Frontend**
+
+* HTML
+* CSS
+* JavaScript
+
+**AI**
+
+* Natural Language Processing
+* Large Language Models
+
+---
+
+## Architecture
+
+```id="lexarch"
+User
+ │
+ ▼
+Frontend (HTML / CSS / JS)
+ │
+ ▼
+Backend Server (Flask / FastAPI)
+ │
+ ▼
+AI Processing Layer
+ │
+ ▼
+Document Analysis
+```
+
+---
+
+## Project Structure
+
+```id="lexstruct"
+Lexora-AI
+│
+│
+├── backend
+│   ├── .env
+│   ├── requirements.txt
+│   └── server.py
+├── frontend
+│   ├── style.css
+│   ├──  script.js
+│   └── index.html
+│
+├── Lexora-AI.png
+└── README.md
+```
+
+---
+
+## Installation
+
+Clone the repository
+
+```id="clonelex"
+git clone https://github.com/yourusername/lexora-ai.git
+cd lexora-ai
+```
+
+Install dependencies
+
+```id="installlex"
+pip install -r requirements.txt
+```
+
+Run the application
+
+```id="runlex"
+python app.py
+```
+
+Open in browser
+
+```id="urllex"
+http://localhost:5000
+```
+
+---
+
+## Example Workflow
+
+1. Upload a document
+2. Lexora processes the document
+3. Ask questions related to the content
+4. Receive AI-generated responses instantly
+
+---
+
+## Future Improvements
+
+* Multi-document search
+* Vector database integration
+* Cloud deployment
+* User authentication
+* Collaboration tools
+
+---
+
+## Author
+
+**Palak Gautam**
+
+AI document assistant built to simplify document understanding and information retrieval.
