@@ -3,78 +3,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="logo.png">
-  <title>Lexora — AI Document Assistant</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300;1,400&family=Cormorant:wght@700;800&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <meta name="description" content="Lexora AI — Intelligent document analyzer for companies. Extract clauses, detect risks, and summarize contracts instantly." />
+  <link rel="icon" href="logo.png" />
+  <title>Lexora — AI Document Analyzer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300;1,400&family=Cormorant:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <header>
+  <!-- HEADER -->
+  <header id="appHeader">
     <div class="logo">
       <img src="logo.png" alt="Lexora" class="logo-img" />
       <span class="logo-text">Lex<em>ora</em></span>
     </div>
-    <div class="header-center">
+    <div class="header-tagline">
       <span class="qual-item">Upload</span>
       <span class="qual-star">✦</span>
-      <span class="qual-item">Query</span>
+      <span class="qual-item">Analyze</span>
       <span class="qual-star">✦</span>
       <span class="qual-item">Understand</span>
     </div>
-    <div class="header-badge">AI Document Assistant</div>
+    <div class="header-right">
+      <div class="header-badge">AI Document Analyzer</div>
+      <div class="model-pill">llama-3.3-70b</div>
+    </div>
   </header>
 
-  <div class="app">
+  <!-- MAIN LAYOUT -->
+  <div class="app" id="app">
 
-    <div class="left">
-      <div class="left-top">
-        <div class="panel-label">Documents</div>
-        <div class="drop-zone" id="dropZone">
-          <input type="file" id="fileInput" multiple />
-          <div class="drop-glyph">❧</div>
-          <h3>Drop files here</h3>
-          <p>.txt · .pdf · .md · .csv</p>
-        </div>
+    <!-- LEFT PANEL — Document Manager -->
+    <aside class="left" id="leftPanel">
+      <div class="panel-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Documents
       </div>
+
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" multiple accept=".pdf,.txt,.md,.csv,.docx" />
+        <div class="drop-glyph">❧</div>
+        <h3>Drop files here</h3>
+        <p>.pdf · .docx · .txt · .md · .csv</p>
+      </div>
+
       <div class="doc-list" id="docList">
         <div class="empty-docs">No documents yet.<br />Upload to begin.</div>
       </div>
-    </div>
 
-    <div class="right">
+      <!-- Analyze All Button -->
+      <div class="analyze-bar" id="analyzeBar" style="display:none">
+        <button class="btn-analyze" id="btnAnalyze" onclick="analyzeAll()">
+          <span class="btn-icon">⚡</span> Analyze Documents
+        </button>
+      </div>
+    </aside>
+
+    <!-- RIGHT PANEL — Chat + Analysis -->
+    <main class="right" id="rightPanel">
+
+      <!-- Top Bar -->
       <div class="chat-topbar">
         <div class="status-dot" id="statusDot"></div>
         <span class="status-label" id="statusText">No document selected</span>
         <span class="doc-name-tag" id="docTag"></span>
+        <div class="topbar-actions" id="topbarActions" style="display:none">
+          <button class="action-pill" onclick="quickAction('Give me a complete executive summary of all documents')">Summary</button>
+          <button class="action-pill" onclick="quickAction('What are the key payment terms and amounts?')">Payment Terms</button>
+          <button class="action-pill" onclick="quickAction('List all termination conditions, penalties, or critical deadlines')">Important Dates</button>
+          <button class="action-pill" onclick="quickAction('What obligations does each party have?')">Obligations</button>
+        </div>
       </div>
 
-      <div class="chat-area" id="chatArea">
-        <div class="welcome" id="welcome">
-          <div class="welcome-title">Ask your<br /><em>document</em><br />anything.</div>
-          <div class="welcome-line"></div>
-          <p class="welcome-sub">Upload any text file on the left, then query it naturally. Lexora reads and understands so you don't have to search manually.</p>
-          <div class="suggestions">
-            <button class="sug-btn" onclick="useSug(this)"><span class="sug-tag">Summarise</span>Give me a brief overview</button>
-            <button class="sug-btn" onclick="useSug(this)"><span class="sug-tag">Key Points</span>What are the main takeaways?</button>
-            <button class="sug-btn" onclick="useSug(this)"><span class="sug-tag">Clarify</span>Explain the core argument simply</button>
-            <button class="sug-btn" onclick="useSug(this)"><span class="sug-tag">Extract</span>List all key facts and figures</button>
+      <!-- TAB BAR -->
+      <div class="tab-bar" id="tabBar">
+        <button class="tab active" data-tab="chat" onclick="switchTab('chat', this)">
+          <span class="tab-icon">💬</span> Chat
+        </button>
+        <button class="tab" data-tab="summary" onclick="switchTab('summary', this)">
+          <span class="tab-icon">📋</span> Summary
+          <span class="tab-badge" id="summaryBadge" style="display:none">✓</span>
+        </button>
+        <button class="tab" data-tab="clauses" onclick="switchTab('clauses', this)">
+          <span class="tab-icon">⚖️</span> Clauses
+          <span class="tab-badge" id="clausesBadge" style="display:none">✓</span>
+        </button>
+        <button class="tab" data-tab="risks" onclick="switchTab('risks', this)">
+          <span class="tab-icon">🛡️</span> Risk Analysis
+          <span class="tab-badge" id="risksBadge" style="display:none">✓</span>
+        </button>
+      </div>
+
+      <!-- CHAT TAB -->
+      <div class="tab-content active" id="tab-chat">
+        <div class="chat-area" id="chatArea">
+          <div class="welcome" id="welcome">
+            <div class="welcome-title">Ask your<br /><em>document</em><br />anything.</div>
+            <div class="welcome-line"></div>
+            <p class="welcome-sub">Upload any document on the left, then query it naturally. Lexora reads, understands, and extracts insights from your company files.</p>
+            <div class="suggestions">
+              <button class="sug-btn" onclick="useSug(this)"><span class="sug-tag">Summarise</span>Give me a brief overview</button>
+              <button class="sug-btn" onclick="useSug(this)"><span class="sug-tag">Key Points</span>What are the main takeaways?</button>
+              <button class="sug-btn" onclick="useSug(this)"><span class="sug-tag">Risks</span>What are the risky clauses?</button>
+              <button class="sug-btn" onclick="useSug(this)"><span class="sug-tag">Obligations</span>What are each party's obligations?</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-bar">
+          <div class="input-wrap">
+            <textarea id="queryInput" placeholder="Ask about your documents…" rows="1"></textarea>
+            <button class="send-btn" id="sendBtn" onclick="send()" disabled>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+          </div>
+          <div class="input-hint">
+            <span>Enter to send · Shift+Enter for new line</span>
+            <span id="docCount">0 documents</span>
           </div>
         </div>
       </div>
 
-      <div class="input-bar">
-        <div class="input-wrap">
-          <textarea id="queryInput" placeholder="Pose your question…" rows="1"></textarea>
-          <button class="send-btn" id="sendBtn" onclick="send()" disabled>Send →</button>
-        </div>
-        <div class="input-hint">
-          <span>Enter to send · Shift+Enter for new line</span>
-          <span id="docCount">0 documents</span>
+      <!-- SUMMARY TAB -->
+      <div class="tab-content" id="tab-summary">
+        <div class="analysis-panel" id="summaryPanel">
+          <div class="analysis-empty">
+            <div class="empty-icon">📋</div>
+            <p>Upload documents and click <strong>Analyze Documents</strong> to generate structured summaries.</p>
+          </div>
         </div>
       </div>
-    </div>
 
+      <!-- CLAUSES TAB -->
+      <div class="tab-content" id="tab-clauses">
+        <div class="analysis-panel" id="clausesPanel">
+          <div class="analysis-empty">
+            <div class="empty-icon">⚖️</div>
+            <p>Upload documents and click <strong>Analyze Documents</strong> to extract contract clauses.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RISKS TAB -->
+      <div class="tab-content" id="tab-risks">
+        <div class="analysis-panel" id="risksPanel">
+          <div class="analysis-empty">
+            <div class="empty-icon">🛡️</div>
+            <p>Upload documents and click <strong>Analyze Documents</strong> to detect legal risks.</p>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- LOADING OVERLAY -->
+  <div class="loading-overlay" id="loadingOverlay" style="display:none">
+    <div class="loading-card">
+      <div class="loading-spinner"></div>
+      <div class="loading-text" id="loadingText">Analyzing documents…</div>
+      <div class="loading-sub">This may take a moment</div>
+    </div>
   </div>
 
   <script src="script.js"></script>
