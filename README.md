@@ -1,138 +1,231 @@
-# Lexora AI — Intelligent Document Assistant
+# Lexora – AI Document Assistant
 
-Lexora AI is an AI-powered document assistant that helps users upload, analyze, and interact with documents using natural language. It allows users to extract insights, summarize documents, and ask questions about their files through an intuitive interface.
+Lexora is an AI-powered document intelligence platform that helps users **analyze, understand, and extract insights from business documents instantly**. Instead of manually reading long contracts, reports, or agreements, Lexora allows users to upload documents and interact with them using natural language.
+
+The system leverages **Large Language Models (LLMs), Natural Language Processing (NLP), and document parsing** to generate summaries, identify key clauses, detect risks, and answer contextual queries.
 
 ---
+
+## 🚀 Live Demo
+
+https://lexora-ai.vercel.app
 
 ## Demo
 
-![Project Demo](Lexora-AI.gif)
+<p align="center">
+  <img src="Lexora-AI.gif" width="900">
+</p>
+---
+
+## 📌 Problem
+
+Professionals spend a large amount of time reviewing lengthy documents such as:
+
+- Contracts  
+- Agreements  
+- Business proposals  
+- Reports  
+- Legal documents  
+
+Finding important clauses, payment terms, and risks manually is **slow and inefficient**.
+
+Lexora solves this by allowing users to **chat with documents and extract insights instantly**.
 
 ---
 
-## Features
+## ✨ Features
 
-* Upload and analyze documents
-* AI-powered question answering
-* Document summarization
-* Context-aware responses
-* Simple and clean UI
-* Fast document processing
+### 📂 Document Upload
+Upload documents in multiple formats.
 
----
+Supported formats:
 
-## Tech Stack
-
-**Backend**
-
-* Python
-* Flask / FastAPI
-* AI APIs
-
-**Frontend**
-
-* HTML
-* CSS
-* JavaScript
-
-**AI**
-
-* Natural Language Processing
-* Large Language Models
+- PDF  
+- DOCX  
+- TXT  
+- MD  
+- CSV  
 
 ---
 
-## Architecture
+### 💬 AI Chat with Documents
 
-```id="lexarch"
-User
- │
- ▼
-Frontend (HTML / CSS / JS)
- │
- ▼
-Backend Server (Flask / FastAPI)
- │
- ▼
-AI Processing Layer
- │
- ▼
-Document Analysis
-```
+Users can ask natural language questions like:
+
+- "Summarize this document"
+- "What are the payment terms?"
+- "What obligations exist?"
+- "Are there any risky clauses?"
+
+The system retrieves relevant sections and generates contextual answers.
 
 ---
 
-## Project Structure
+### 🧠 Smart Document Understanding
 
-```id="lexstruct"
-Lexora-AI
-│
-│
-├── backend
-│   ├── .env
-│   ├── requirements.txt
-│   └── server.py
-├── frontend
-│   ├── style.css
-│   ├──  script.js
-│   └── index.html
-│
-├── Lexora-AI.png
-└── README.md
-```
+Lexora automatically extracts:
+
+- Key points  
+- Important dates  
+- Payment terms  
+- Clauses  
+- Risks  
+- Obligations  
 
 ---
 
-## Installation
+### ⚡ Instant Summaries
+
+Generate quick summaries of long documents to save time and improve productivity.
+
+---
+
+### ⚠️ Risk Detection
+
+Lexora highlights potentially risky clauses such as:
+
+- hidden liabilities  
+- penalties  
+- restrictive obligations  
+- unfavorable terms  
+
+---
+
+### 📊 Structured Insights
+
+The interface organizes insights into different sections:
+
+- Chat  
+- Summary  
+- Clauses  
+- Risk Analysis  
+
+This makes document navigation faster and easier.
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+- React / Next.js  
+- Tailwind CSS  
+- Modern AI dashboard UI  
+
+### Backend
+- Python  
+- REST APIs  
+
+### AI / NLP
+- Large Language Model APIs  
+- Retrieval Augmented Generation (RAG)  
+- Document embeddings  
+- NLP-based text parsing  
+
+### Deployment
+- Vercel
+
+---
+
+## 🏗 System Architecture
+
+1. User uploads document  
+2. Document text is extracted and processed  
+3. Text is chunked and converted into embeddings  
+4. User query is matched with relevant chunks  
+5. LLM generates contextual answers  
+6. Insights are displayed in the UI
+
+---
+
+## ⚙️ Installation
 
 Clone the repository
 
-```id="clonelex"
+```bash
 git clone https://github.com/yourusername/lexora-ai.git
+```
+
+Navigate to the project folder
+
+```bash
 cd lexora-ai
 ```
 
 Install dependencies
 
-```id="installlex"
-pip install -r requirements.txt
+```bash
+npm install
 ```
 
-Run the application
+Run the development server
 
-```id="runlex"
-python app.py
-```
-
-Open in browser
-
-```id="urllex"
-http://localhost:5000
+```bash
+npm run dev
 ```
 
 ---
 
-## Example Workflow
+## 📖 Usage
 
-1. Upload a document
-2. Lexora processes the document
-3. Ask questions related to the content
-4. Receive AI-generated responses instantly
-
----
-
-## Future Improvements
-
-* Multi-document search
-* Vector database integration
-* Cloud deployment
-* User authentication
-* Collaboration tools
+1. Upload a document  
+2. Click **Analyze Documents**  
+3. Ask questions about the document  
+4. Explore summaries, clauses, and risk analysis  
 
 ---
 
-## Author
+## 🔎 Example Queries
 
-**Palak Gautam**
+- Give me a brief overview  
+- What are the payment terms?  
+- List important dates  
+- Highlight risky clauses  
+- What obligations exist in this contract?
 
-AI document assistant built to simplify document understanding and information retrieval.
+---
+
+## 📁 Project Structure
+
+```
+lexora-ai
+│
+├── frontend
+│   ├── components
+│   ├── pages
+│   └── styles
+│
+├── backend
+│   ├── api
+│   ├── document_processing
+│   └── llm_integration
+│
+├── public
+└── README.md
+```
+
+---
+
+## 🔮 Future Improvements
+
+- Multi-document analysis  
+- Legal clause classification  
+- Financial document insights  
+- Export AI insights as reports  
+- Enterprise workspace for teams  
+- Vector database integration  
+
+---
+
+## 👤 Author
+
+**Rishabh Rai**  
+B.Tech – Electronics and Computer Science  
+KIIT University
+
+Experience in AI applications, product development, and entrepreneurship ecosystems.
+
+---
+
+## ⭐ Support
+
+If you like this project, consider giving it a **star on GitHub**.
