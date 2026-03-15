@@ -291,13 +291,18 @@ header {
   border: none;
   color: var(--text-muted);
   cursor: pointer;
-  font-size: 12px;
-  padding: 2px 5px;
-  border-radius: 4px;
+  padding: 6px;
+  border-radius: 6px;
   flex-shrink: 0;
   transition: all var(--transition);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.doc-item:hover .doc-remove { opacity: 1; }
 .doc-remove:hover { background: rgba(255,95,109,0.15); color: var(--red); }
+.doc-item:has(.doc-remove:hover) { background: rgba(255,95,109,0.05); border-color: rgba(255,95,109,0.1); }
 
 /* ─── ANALYZE BAR ─── */
 .analyze-bar {
@@ -913,6 +918,7 @@ header {
   .bubble { max-width: 85%; }
 
   .doc-item { padding: 14px 16px; margin-bottom: 8px; background: rgba(255,255,255,0.03); }
+  .doc-remove { opacity: 1; color: var(--red); background: rgba(255,95,109,0.05); }
   
   #queryInput {
     font-size: 16px; /* Prevents auto-zoom on iOS */
