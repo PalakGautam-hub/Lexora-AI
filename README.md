@@ -11,10 +11,7 @@ The system leverages **Large Language Models (LLMs), Natural Language Processing
 https://lexora-ai.vercel.app
 
 ## Demo
-
-<p align="center">
-  <img src="Lexora-AI.gif" width="900">
-</p>
+![Demo](demo.gif)
 ---
 
 ## 📌 Problem
