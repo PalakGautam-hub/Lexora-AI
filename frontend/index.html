@@ -13,6 +13,9 @@
 
   <!-- HEADER -->
   <header id="appHeader">
+    <button id="menuBtn" class="menu-btn" aria-label="Toggle menu" onclick="toggleMobileMenu()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
     <div class="logo">
       <img src="logo.png" alt="Lexora" class="logo-img" />
       <span class="logo-text">Lex<em>ora</em></span>
@@ -27,11 +30,16 @@
     <div class="header-right">
       <div class="header-badge">AI Document Analyzer</div>
       <div class="model-pill">llama-3.3-70b</div>
+      <button class="header-upload-mobile" onclick="document.getElementById('fileInput').click()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        Upload
+      </button>
     </div>
   </header>
 
   <!-- MAIN LAYOUT -->
   <div class="app" id="app">
+    <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
 
     <!-- LEFT PANEL — Document Manager -->
     <aside class="left" id="leftPanel">
@@ -43,7 +51,7 @@
       <div class="drop-zone" id="dropZone">
         <input type="file" id="fileInput" multiple accept=".pdf,.txt,.md,.csv,.docx" />
         <div class="drop-glyph">❧</div>
-        <h3>Drop files here</h3>
+        <h3>Tap or Drop files here</h3>
         <p>.pdf · .docx · .txt · .md · .csv</p>
       </div>
 
@@ -101,6 +109,11 @@
             <div class="welcome-title">Ask your<br /><em>document</em><br />anything.</div>
             <div class="welcome-line"></div>
             <p class="welcome-sub">Upload any document on the left, then query it naturally. Lexora reads, understands, and extracts insights from your company files.</p>
+            
+            <button class="mobile-welcome-btn" onclick="document.getElementById('fileInput').click()">
+              <span class="btn-icon">📁</span> Upload Document
+            </button>
+
             <div class="suggestions">
               <button class="sug-btn" onclick="useSug(this)"><span class="sug-tag">Summarise</span>Give me a brief overview</button>
               <button class="sug-btn" onclick="useSug(this)"><span class="sug-tag">Key Points</span>What are the main takeaways?</button>
@@ -166,6 +179,13 @@
     </div>
   </div>
 
+  </div>
+  
+  <!-- MOBILE FLOATING ACTION BUTTON -->
+  <button class="mobile-fab" id="mobileFab" onclick="document.getElementById('fileInput').click()" aria-label="Upload File">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+  </button>
+ 
   <script src="script.js"></script>
 </body>
 </html>

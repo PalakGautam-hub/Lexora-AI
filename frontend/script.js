@@ -233,6 +233,7 @@ function setActive(doc) {
   renderChat();
   updateStatus();
   $btn.disabled = false;
+  closeMobileMenu(); // Auto-close drawer on mobile when selecting a doc
 }
 
 // ═══════════════ STATUS ═══════════════
@@ -241,9 +242,13 @@ function updateStatus() {
     $dot.classList.add("active");
     $st.textContent = "Active —";
     $tag.textContent = state.active.name;
+    $st.onclick = null;
+    $st.style.cursor = "default";
   } else {
     $dot.classList.remove("active");
-    $st.textContent = "No document selected";
+    $st.innerHTML = 'No doc selected. <span style="color:var(--accent);font-weight:700;text-decoration:underline">Tap to Upload</span>';
+    $st.onclick = () => document.getElementById('fileInput').click();
+    $st.style.cursor = "pointer";
     $tag.textContent = "";
   }
 }
@@ -346,6 +351,7 @@ async function analyzeAll() {
 
   const btn = document.getElementById("btnAnalyze");
   btn.disabled = true;
+  closeMobileMenu(); // Close the menu when analyze starts so user sees the loading state better
 
   const docs = state.docs.map(d => ({ name: d.name, text: d.content || "" }));
 
@@ -575,7 +581,26 @@ function hideLoading() {
   $overlay.style.display = "none";
 }
 
-// ═══════════════ UTILITY ═══════════════
+// ═══════════════ MOBILE MENU ═══════════════
+function toggleMobileMenu() {
+  const leftPanel = document.getElementById("leftPanel");
+  const overlay = document.getElementById("mobileOverlay");
+  leftPanel.classList.toggle("open");
+  
+  if (leftPanel.classList.contains("open")) {
+    overlay.classList.add("active");
+  } else {
+    overlay.classList.remove("active");
+  }
+}
+
+function closeMobileMenu() {
+  const leftPanel = document.getElementById("leftPanel");
+  const overlay = document.getElementById("mobileOverlay");
+  if (leftPanel) leftPanel.classList.remove("open");
+  if (overlay) overlay.classList.remove("active");
+}
+
 function esc(str) {
   return String(str || "")
     .replace(/&/g, "&amp;")
