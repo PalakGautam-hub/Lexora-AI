@@ -6,7 +6,7 @@ Lexora AI is an AI-powered document assistant that helps users upload, analyze, 
 
 ## Demo
 
-![Lexora AI Demo](Lexora-AI.png)
+![Project Demo](demo.gif)
 
 ---
 
