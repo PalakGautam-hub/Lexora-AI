@@ -246,9 +246,9 @@ function updateStatus() {
     $st.style.cursor = "default";
   } else {
     $dot.classList.remove("active");
-    $st.innerHTML = 'No doc selected. <span style="color:var(--accent);font-weight:700;text-decoration:underline">Tap to Upload</span>';
-    $st.onclick = () => document.getElementById('fileInput').click();
-    $st.style.cursor = "pointer";
+    $st.textContent = "No document selected";
+    $st.onclick = null;
+    $st.style.cursor = "default";
     $tag.textContent = "";
   }
 }

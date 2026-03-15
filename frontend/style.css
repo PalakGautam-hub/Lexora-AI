@@ -139,7 +139,7 @@ header {
   white-space: nowrap;
 }
 
-.mobile-upload-header-btn {
+.header-upload-mobile {
   display: none;
   align-items: center;
   gap: 6px;
@@ -154,22 +154,7 @@ header {
   transition: all var(--transition);
   box-shadow: 0 4px 12px var(--accent-glow);
 }
-.mobile-upload-header-btn:active { transform: scale(0.95); }
-
-.header-upload-mobile {
-  display: none;
-  align-items: center;
-  gap: 6px;
-  background: var(--accent);
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: var(--radius-sm);
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 4px 12px var(--accent-glow);
-}
+.header-upload-mobile:active { transform: scale(0.95); }
 
 .mobile-welcome-btn {
   display: none;
@@ -191,26 +176,7 @@ header {
   z-index: 10;
   position: relative;
 }
-
-/* ─── MOBILE FAB ─── */
-.mobile-fab {
-  display: none;
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  border: none;
-  box-shadow: 0 8px 32px var(--accent-glow);
-  z-index: 500;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform var(--transition);
-}
-.mobile-fab:active { transform: scale(0.9); }
+.mobile-welcome-btn:active { transform: scale(0.95); }
 
 /* ─── APP LAYOUT ─── */
 .app {
@@ -892,8 +858,6 @@ header {
   .header-badge, .model-pill, .header-tagline { display: none !important; }
   .header-upload-mobile { display: flex !important; }
   .mobile-welcome-btn { display: flex !important; pointer-events: auto; }
-  
-  .mobile-fab { display: flex !important; } 
   
   .app {
     display: block;
